@@ -1,11 +1,7 @@
 Rails.application.routes.draw do
-  get "leaderboard/index"
-  get "matches/new"
-  get "matches/create"
-  get "players/index"
-  get "players/create"
-  get "players/destroy"
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
+  resources :players, only: [:index, :create, :destroy]
+  resources :matches, only: [:new, :create]
+  get "/leaderboard", to: "leaderboard#index"
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
   # Can be used by load balancers and uptime monitors to verify that the app is live.
