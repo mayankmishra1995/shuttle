@@ -1,2 +1,17 @@
-<h1>Leaderboard#index</h1>
-<p>Find me in app/views/leaderboard/index.html.erb</p>
+<h1>Leaderboard</h1>
+
+<table>
+  <tr>
+    <th>Player</th>
+    <th>Wins</th>
+    <th>Losses</th>
+  </tr>
+
+  <% @players.each do |player| %>
+    <tr>
+      <td><%= player.name %></td>
+      <td><%= player.wins %></td>
+      <td><%= player.losses %></td>
+    </tr>
+  <% end %>
+</table>
