@@ -4,12 +4,13 @@ class MatchesController < ApplicationController
   end
 
   def create
-    match = Match.new(match_params)
+    @match = Match.new(match_params)
 
-    if match.save
+    if @match.save
       redirect_to leaderboard_path, notice: "Match recorded"
     else
-      redirect_to new_match_path, alert: match.errors.full_messages.join(", ")
+      @players = Player.all
+      render :new, status: :unprocessable_entity
     end
   end
 

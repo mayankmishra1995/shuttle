@@ -1,5 +1,15 @@
 <h1>Record Match</h1>
 
+<% if @match && @match.errors.any? %>
+  <div style="color: red; margin-bottom: 1em;">
+    <ul style="margin: 0; padding-left: 20px;">
+      <% @match.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
 <form action="/matches" method="post">
   <%= csrf_meta_tags %>
 
@@ -7,7 +17,7 @@
     <label>Winner</label>
     <select name="match[winner_id]" required>
       <% @players.each do |player| %>
-        <option value="<%= player.id %>"><%= player.name %></option>
+        <option value="<%= player.id %>" <%= "selected" if @match&.winner_id == player.id %>><%= player.name %></option>
       <% end %>
     </select>
   </div>
@@ -16,7 +26,7 @@
     <label>Loser</label>
     <select name="match[loser_id]" required>
       <% @players.each do |player| %>
-        <option value="<%= player.id %>"><%= player.name %></option>
+        <option value="<%= player.id %>" <%= "selected" if @match&.loser_id == player.id %>><%= player.name %></option>
       <% end %>
     </select>
   </div>
