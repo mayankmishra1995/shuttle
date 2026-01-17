@@ -7,3 +7,8 @@
 #   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
+
+["Alex", "Sam", "Jordan", "Chris"].each do |name|
+  Player.find_or_create_by!(name: name)
+end
+  
