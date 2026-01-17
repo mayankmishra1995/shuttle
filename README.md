@@ -6,7 +6,6 @@ Shuttle is a simple Ruby on Rails application to manage a badminton league.
 It allows you to manage players, record match results, and view a leaderboard
 based on wins and losses.
 
----
 
 ## Features
 
@@ -15,7 +14,6 @@ based on wins and losses.
 - Automatically track wins and losses
 - View leaderboard ranked by number of wins
 
----
 
 ## Tech Stack
 
@@ -24,12 +22,11 @@ based on wins and losses.
 - PostgreSQL
 - Basic ERB views (no frontend framework)
 
----
 
 ## Setup Instructions
 
-1. Clone the repository
 ```bash
+1. Clone the repository
 git clone repo
 cd shuttle
 
@@ -48,4 +45,4 @@ rails db:seed
 rails server
 
 
-Visit: http://localhost:3000
+Visit: http://localhost:3000/players
