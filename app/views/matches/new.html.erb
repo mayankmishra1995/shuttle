@@ -1,2 +1,28 @@
-<h1>Matches#new</h1>
-<p>Find me in app/views/matches/new.html.erb</p>
+<h1>Record Match</h1>
+
+<form action="/matches" method="post">
+  <%= csrf_meta_tags %>
+
+  <div>
+    <label>Winner</label>
+    <select name="match[winner_id]" required>
+      <% @players.each do |player| %>
+        <option value="<%= player.id %>"><%= player.name %></option>
+      <% end %>
+    </select>
+  </div>
+
+  <div>
+    <label>Loser</label>
+    <select name="match[loser_id]" required>
+      <% @players.each do |player| %>
+        <option value="<%= player.id %>"><%= player.name %></option>
+      <% end %>
+    </select>
+  </div>
+
+  <button type="submit">Save Match</button>
+</form>
+
+<br />
+<a href="/leaderboard">View Leaderboard</a>
