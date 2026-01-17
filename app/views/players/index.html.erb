@@ -1,2 +1,36 @@
-<h1>Players#index</h1>
-<p>Find me in app/views/players/index.html.erb</p>
+<h1>Players</h1>
+
+<form action="/players" method="post">
+  <%= csrf_meta_tags %>
+
+  <label>Player Name</label>
+  <input type="text" name="player[name]" required />
+
+  <button type="submit">Add Player</button>
+</form>
+
+<hr />
+
+<table border="1" cellpadding="6">
+  <tr>
+    <th>Name</th>
+    <th>Wins</th>
+    <th>Losses</th>
+    <th>Action</th>
+  </tr>
+
+  <% @players.each do |player| %>
+    <tr>
+      <td><%= player.name %></td>
+      <td><%= player.wins %></td>
+      <td><%= player.losses %></td>
+      <td>
+        <form action="/players/<%= player.id %>" method="post">
+          <%= csrf_meta_tags %>
+          <input type="hidden" name="_method" value="delete" />
+          <button type="submit">Remove</button>
+        </form>
+      </td>
+    </tr>
+  <% end %>
+</table>
